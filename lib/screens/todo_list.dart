@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/screens/add_page.dart';
 
 class TodoListPage extends StatefulWidget {
   const TodoListPage({super.key});
@@ -15,7 +16,7 @@ class _TodoListPageState extends State<TodoListPage> {
         centerTitle: true,
         backgroundColor: Colors.green,
         title: Text(
-          'Todo app',
+          'Todo App',
           style: TextStyle(
             fontWeight: FontWeight.w700,
           ),
@@ -23,8 +24,17 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Colors.green,
-          onPressed: () {},
+          onPressed: () {
+            navigateToAddPage();
+          },
           label: Text('Add Todo')),
     );
+  }
+
+  void navigateToAddPage() {
+    final route = MaterialPageRoute(
+      builder: (context) => AddTodoPage(),
+    );
+    Navigator.push(context, route);
   }
 }
