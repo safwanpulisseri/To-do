@@ -84,10 +84,28 @@ class _AddTodoPageState extends State<AddTodoPage> {
     // print(response.statusCode);
     // print(response.body);
     if (response.statusCode == 201) {
-      print('Creation Success');
+      showSuccessMessage('Creation Success');
     } else {
-      print('Creation Failed');
-      print(response.body);
+      showErrorMessage('Creation Failed');
     }
+  }
+
+  void showSuccessMessage(String message) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.green,
+      // margin: EdgeInsets.all(20),
+      behavior: SnackBarBehavior.floating,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void showErrorMessage(String message) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.red,
+      behavior: SnackBarBehavior.floating,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
